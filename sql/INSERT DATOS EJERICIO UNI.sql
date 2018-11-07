@@ -1,0 +1,83 @@
+USE UNI  
+/*VER DABAJO DE TODO EL QUERY QUE JUNTA LAS 3 TABLAS*/
+
+
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(1,'Taller de Computación I',1)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(2,'Algorítmos',1)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(3,'Estructura de Datos',1)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(4,'Taller de Computación II',2)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(5,'Técnicas de Almacenamiento de Datos',2)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(6,'Taller de Computación III',2)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(7,'Integración y Programación',2)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(8,'Taller de Computación IV',3)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(9,'Diseño de Sistemas',3)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(10,'Taller de Computación V',3)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(11,'Calidad de Software',3)
+Insert into MATERIA (ID, DESCRIPCION, ANIO) values(12,'Taller de Computación VI',3)
+
+Insert into Alumno (DNI, NOMBRE, APELLIDO, EMAIL) values(1,'Federio', 'Crivelli', 'fcrivelli@gmail.com' )
+Insert into Alumno (DNI, NOMBRE, APELLIDO, EMAIL) values(2, 'Gaston', 'Aguirre', null )
+Insert into Alumno (DNI, NOMBRE, APELLIDO, EMAIL) values(3, 'Rodrigo', 'Alonso', null)
+Insert into Alumno (DNI, NOMBRE, APELLIDO, EMAIL) values(4, 'Juan Ignacio','Dinneno', 'did@hotmail.com')
+Insert into Alumno (DNI, NOMBRE, APELLIDO, EMAIL) values(5, 'Bruno', 'Casanova', null)
+
+
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(1,1,1,8.00, '2016-12-14')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(2,1,2,7.50, '2016-12-14')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(3,1,3,10.00,'2016-12-14')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(4,1,4,4.00, '2016-12-14')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(5,1,5,2.00, '2016-12-15')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(6,1,5,9.00, '2016-12-15')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(7,1,6,8.00, '2016-12-15')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(8,1,7,5.00, '2016-12-16')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(9,1,8,9.00, '2016-12-16')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(10,1,9,2.00, '2017-02-05')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(11,1,9,4.00, '2017-02-05')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(12,1,10,10.00, '2017-02-05')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(13,2,1,7.50, '2017-02-05')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(14,2,2,9.50, '2017-02-05')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(15,2,3,10.00,'2017-02-05')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(17,2,5,4.00, '2017-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(18,2,6,9.00, '2017-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(19,2,7,10.00, '2017-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(20,2,8,7.00, '2017-02-07')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(21,2,9,8.50, '2017-02-07')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(22,2,10,6.00, '2017-02-07')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(23,2,11,8.00, '2017-07-30')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(24,2,12,5.50, '2017-07-30')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(25,3,1,8.00, '2017-07-30')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(26,3,2,3.00, '2017-07-30')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(27,3,2,9.00, '2017-07-30')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(28,3,3,10.00, '2017-07-31')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(29,3,4,8.50, '2017-07-31')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(30,3,5,1.00, '2017-07-31')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL)  values(16,2,4,8.00,'2017-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(31,3,5,1.00, '2017-07-31')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(32,3,5,4.00, '2017-08-01')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(33,3,6,8.00, '2017-08-01')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(34,3,7,2.00, '2017-12-12')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(35,4,1,6.00, '2017-12-12')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(36,4,2,8.50, '2017-12-12')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(37,4,3,6.50, '2017-12-12')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(38,4,4,7.50, '2017-12-12')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(39,4,5,10.00,'2018-02-06' )
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(40,4,6,4.00,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(41,4,7,7.50,'2018-02-06' )
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(42,4,8,7.50,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(43,4,9,5.50,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(44,4,10,7.50,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(45,4,11,9.50,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(46,5,1,10.00,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(47,5,2,8.50,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(48,5,3,9.00,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(49,5,4,10.00,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(50,5,5,2.00,'2018-02-06')
+Insert into Finales (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(51,5,5,4.00,'2018-02-06')
+
+
+
+
+
+SELECT DESCRIPCION, NOMBRE, APELLIDO, NOTA, FECHA_FINAL 
+FROM FINALES F INNER JOIN ALUMNO A ON F.DNI = A.DNI 
+INNER JOIN MATERIA M ON F.ID_MATERIA = M.ID
