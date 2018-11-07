@@ -28,6 +28,7 @@ public class AlumnoDialogModificar extends JDialog {
 
 	public AlumnoDialogModificar() {
 		this.setModal(true);
+		
 		this.setSize(300, 250);
 		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.getContentPane().add(this.createCenter0(), BorderLayout.CENTER);
@@ -73,6 +74,7 @@ public class AlumnoDialogModificar extends JDialog {
 
 			(new AlumnoDAO()).ActualizarAlumno(b);
 			tableModel.update(new AlumnoDAO().getAlumnos());
+			System.out.println("pase por aki");
 			dispose();
 		});
 		pane.add(aceptar);

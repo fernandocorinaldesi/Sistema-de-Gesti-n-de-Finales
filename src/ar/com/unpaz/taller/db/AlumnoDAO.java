@@ -247,10 +247,10 @@ public class AlumnoDAO {
 	                con.setAutoCommit(false);
 	                      
 	                PreparedStatement ps = con.prepareStatement(ACTUALIZARALUMNO );
-	                ps.setInt(1,a.getDni());
-	                ps.setString(2,a.getNombre());
-	                ps.setString(3, a.getApellido());
-	                ps.setString(4,a.getEmail());
+	                ps.setString(1,a.getNombre());
+	                ps.setString(2, a.getApellido());
+	                ps.setString(3,a.getEmail());
+	                ps.setInt(4,a.getDni());
 	                retorno = ps.executeUpdate();
 	                con.commit();
 	                con.setAutoCommit(true);

@@ -31,6 +31,7 @@ public class AlumnosDialog extends JDialog {
 	public AlumnosDialog(String titulo, AlumnoTabletModel tableModel) {
 		this.tableModel = tableModel;
 		subDialog.setTableModel(tableModel);
+		subDialog2.setTableModel(tableModel);
 		setSize(450, 256);
 		setModal(true);
 		setTitle(titulo);
