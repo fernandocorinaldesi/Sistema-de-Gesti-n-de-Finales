@@ -51,6 +51,7 @@ public class FinalesDialog extends JDialog {
 	      subDialog.setTitle("Agregar");
 	      subDialog.updateAlumnos();
 	      subDialog.updateMaterias();
+	      subDialog.operacion = Operacion.AGREGAR;
 	      subDialog.editableFields(true);
 	      subDialog.setVisible(true);
 	    });
@@ -63,15 +64,7 @@ public class FinalesDialog extends JDialog {
 	    	   int row = table.getSelectedRow();
                (new FinalDAO()).eliminar(tableModel.getInRow(row));
                tableModel.update( (new FinalDAO()).getFinales());}
-	       /* subDialog.setTitle("Borrar");
-	        subDialog.updateAlumnos();
-	        subDialog.updateMaterias();
-	        int row = table.getSelectedRow();
-	        subDialog.setFinal(tableModel.getInRow(row));
-	        subDialog.operacion = Operacion.ELIMINAR;
-	        // subDialog.editableFields(false);
-	        subDialog.setVisible(true);*/
-	      }
+	 	      }
 	    });
 	    actualizar = new JButton("Modificar");
 	    actualizar.setIcon(new ImageIcon(MateriasDialog.class.getResource("./images/Modificar.png")));
@@ -79,9 +72,8 @@ public class FinalesDialog extends JDialog {
 	      subDialog.setTitle("Modificar");
 	      if (table.getSelectedRow() != -1) {
 	        int row = table.getSelectedRow();
-              subDialog.updateAlumnos();
+            subDialog.updateAlumnos();
 	        subDialog.updateMaterias();
-
 	        subDialog.setFinal(tableModel.getInRow(row));
 	        subDialog.operacion = Operacion.ACTUALIZAR;
 	        subDialog.editableFields(true);

@@ -31,7 +31,8 @@ public class AlumnoDAO {
 	    
 	    private static final String MAXALUMNO = "SELECT ISNULL(MAX(DNI),0) + 1 AS MAXDNI FROM ALUMNO ";
 	    
-	    private static final String ACTUALIZARALUMNO = "UPDATE ALUMNO SET NOMBRE = ?, APELLIDO = ?, EMAIL = ? WHERE DNI = ?";
+	    private static final String ACTUALIZARALUMNO = "UPDATE ALUMNO SET NOMBRE = ?, APELLIDO = ?, EMAIL = ? WHERE DNI = ? ";
+	    
 	  
 	    
 
@@ -168,7 +169,7 @@ public class AlumnoDAO {
 	                int maxDNI = this.getMaxDNIAlumno(con);
 	                      
 	                PreparedStatement ps = con.prepareStatement(INSERTARALUMNO );
-	                ps.setInt(1,a.getDni() );
+	                ps.setInt(1,maxDNI);
 	                ps.setString(2, a.getNombre());
 	                ps.setString(3, a.getApellido());
 	                ps.setString(4, a.getEmail());

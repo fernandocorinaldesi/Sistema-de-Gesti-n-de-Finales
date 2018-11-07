@@ -114,7 +114,8 @@ public class FinalDialog extends JDialog {
 	      Alumno alumno = (Alumno) alumnos.getSelectedItem();
 	      Materia materia = (Materia) materias.getSelectedItem();
 	      double nota = Double.parseDouble(campoNota.getText());
-	      Final finalObj = new Final(0, alumno, materia, LocalDate.now(), nota);
+	      Final finalObj2 = new Final();
+	      Final finalObj = new Final(finalObj2.getId(), alumno, materia, LocalDate.now(), nota);
 	      (new FinalDAO()).agregar(finalObj);
 	      dispose();
 	      tableModel.update(new FinalDAO().getFinales());
@@ -125,6 +126,7 @@ public class FinalDialog extends JDialog {
 	      tableModel.update(new FinalDAO().getFinales());
 	    }
 	    if (this.operacion == Operacion.ACTUALIZAR) {
+	    	 
 	      (new FinalDAO()).actualizar(finalObj);
 	      dispose();
 	      tableModel.update(new FinalDAO().getFinales());

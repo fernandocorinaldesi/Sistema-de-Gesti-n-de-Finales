@@ -28,7 +28,6 @@ public class AlumnoDialogModificar extends JDialog {
 
 	public AlumnoDialogModificar() {
 		this.setModal(true);
-		
 		this.setSize(300, 250);
 		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.getContentPane().add(this.createCenter0(), BorderLayout.CENTER);

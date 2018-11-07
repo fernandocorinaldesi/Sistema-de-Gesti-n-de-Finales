@@ -17,8 +17,16 @@ public class Final {
 	    this.materia = materia;
 	    this.nota = nota;
 	  }
+	 
 
-	  public int getId() {
+	
+	public Final() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public int getId() {
 	    return id;
 	  }
 
