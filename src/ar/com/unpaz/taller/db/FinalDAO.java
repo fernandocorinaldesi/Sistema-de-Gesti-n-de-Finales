@@ -15,13 +15,18 @@ import ar.com.unpaz.modelo.Materia;
 
 public class FinalDAO {
 	private static final String MAXID = "SELECT ISNULL(MAX(ID),0) + 1 AS MAXID FROM FINALES ";
-	private static final String query = "SELECT * FROM FINALES";
+	private static final String LISTAFINALES = "SELECT * FROM FINALES";
+	private static final String LISTAALUMNOSXDNI = "SELECT * FROM ALUMNO WHERE DNI=?";
+	private static final String LISTAMATERIASXDNISELECT = "SELECT * FROM MATERIA WHERE ID=?";
+	private static final String AGREGAR = "INSERT INTO FINALES (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(?,?,?,?,?)";
+	private static final String BORRAR = "DELETE FROM FINALES WHERE ID=?";
+	private static final String ACTUALIZAR = "UPDATE FINALES SET DNI=?,ID_MATERIA=?," + "NOTA=?,FECHA_FINAL=? WHERE ID=?";
 	
 	 public List<Final> getFinales() {
 		   
 		    Connection conexion = Conexion.getConexion();
 		    List<Final> todos = new ArrayList<>();
-		    try (PreparedStatement st = conexion.prepareStatement(query);
+		    try (PreparedStatement st = conexion.prepareStatement(LISTAFINALES);
 		        ResultSet resultSet = st.executeQuery()) {
 		      while (resultSet.next()) {
 		        int id = resultSet.getInt("ID");
@@ -39,9 +44,8 @@ public class FinalDAO {
 		  }
 		  
 		  private Alumno buscarAlumnoPorDNI(int dni) {
-		    String query = "SELECT * FROM ALUMNO WHERE DNI=?";
-		    Connection conexion = Conexion.getConexion();
-		    try (PreparedStatement st = conexion.prepareStatement(query)) {
+		     Connection conexion = Conexion.getConexion();
+		    try (PreparedStatement st = conexion.prepareStatement(LISTAALUMNOSXDNI)) {
 		      st.setInt(1, dni);
 		      try (ResultSet resultSet = st.executeQuery()) {
 		        if (resultSet.next()) {
@@ -60,9 +64,9 @@ public class FinalDAO {
 		  }
 		    
 		  private Materia buscarMateriaPorId( int id) {
-		    String query = "SELECT * FROM MATERIA WHERE ID=?";
+		    
 		    Connection conexion = Conexion.getConexion();
-		    try (PreparedStatement st = conexion.prepareStatement(query)) {
+		    try (PreparedStatement st = conexion.prepareStatement(LISTAMATERIASXDNISELECT)) {
 		      st.setInt(1, id);
 		      try (ResultSet resultSet = st.executeQuery()) {
 		        if (resultSet.next()) {
@@ -80,9 +84,8 @@ public class FinalDAO {
 		  }
 		  
 		  public void eliminar(Final finalObj) {
-			    String query = "DELETE FROM FINALES WHERE ID=?";
 			    Connection conexion = Conexion.getConexion();
-			    try (PreparedStatement st = conexion.prepareStatement(query)) {
+			    try (PreparedStatement st = conexion.prepareStatement(BORRAR)) {
 			      st.setInt(1, finalObj.getId());
 			      st.executeUpdate();
 			    } catch (Exception e) {
@@ -91,9 +94,8 @@ public class FinalDAO {
 			  }
 
 		  public void agregar(Final finalObj) {
-			  String query = "INSERT INTO FINALES (ID, DNI, ID_MATERIA, NOTA, FECHA_FINAL) values(?,?,?,?,?)";
 			    Connection conexion = Conexion.getConexion();
-			    try (PreparedStatement st = conexion.prepareStatement(query)) {
+			    try (PreparedStatement st = conexion.prepareStatement(AGREGAR)) {
 			     int maxid = this.getMaxIDFinales(conexion);
 				  st.setInt(1,maxid);
 			      st.setInt(2, finalObj.getAlumno().getDni());
@@ -120,11 +122,10 @@ public class FinalDAO {
 		    }
 
 		  public void actualizar(Final finalObj) {
-			  String query = "UPDATE FINALES SET DNI=?,ID_MATERIA=?," + "NOTA=?,FECHA_FINAL=? WHERE ID=?";
 			    Connection conexion = Conexion.getConexion();
 			   
 			    
-			    try (PreparedStatement st = conexion.prepareStatement(query)) {
+			    try (PreparedStatement st = conexion.prepareStatement(ACTUALIZAR)) {
 			     
 			      st.setInt(1, finalObj.getAlumno().getDni());
 			      st.setDouble(2, finalObj.getMateria().getIdMateria());

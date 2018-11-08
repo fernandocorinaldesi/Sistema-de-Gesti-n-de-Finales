@@ -12,7 +12,16 @@ public class FinalTableModel extends AbstractTableModel {
 	  
 	  private List<Final> finalesList = new ArrayList<>();
 
-	  @Override
+	public FinalTableModel(List<Final> finalesList) {
+		  this.finalesList = finalesList;
+		// TODO Auto-generated constructor stub
+	}
+
+	 public FinalTableModel() {
+		// TODO Auto-generated constructor stub
+	 }
+
+	@Override
 	  public int getRowCount() {
 	    return finalesList.size();
 	  }

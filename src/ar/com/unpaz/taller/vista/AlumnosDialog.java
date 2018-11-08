@@ -9,12 +9,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import ar.com.unpaz.modelo.AlumnoTabletModel;
-import ar.com.unpaz.modelo.FinalTableModel;
+
 import ar.com.unpaz.taller.db.AlumnoDAO;
-import ar.com.unpaz.taller.db.FinalDAO;
-import ar.com.unpaz.taller.vista.FinalDialog.Operacion;
+
 
 public class AlumnosDialog extends JDialog {
 
@@ -27,8 +28,10 @@ public class AlumnosDialog extends JDialog {
 	private AlumnoTabletModel tableModel;
 	private AlumnoDialog subDialog = new AlumnoDialog();
 	private AlumnoDialogModificar subDialog2 = new AlumnoDialogModificar();
+	
 
 	public AlumnosDialog(String titulo, AlumnoTabletModel tableModel) {
+		
 		this.tableModel = tableModel;
 		subDialog.setTableModel(tableModel);
 		subDialog2.setTableModel(tableModel);
@@ -38,6 +41,9 @@ public class AlumnosDialog extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		getContentPane().add(createCenter(), BorderLayout.CENTER);
 		getContentPane().add(createSouth(), BorderLayout.SOUTH);
+		TableRowSorter<TableModel> elQueOrdena = new TableRowSorter<TableModel>(tableModel);
+		table.setRowSorter(elQueOrdena);
+	  
 	}
 
 	private JScrollPane createCenter() {

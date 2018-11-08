@@ -26,6 +26,7 @@ public class FinalDialog extends JDialog {
 	  private JComboBox<Alumno> alumnos;
 	  private JComboBox<Materia> materias;
 	  private JLabel fechaLabel;
+	  private JLabel id;
 	  private JTextField campoNota;
 	  private JButton aceptar;
 	  private JButton cancelar;
@@ -66,21 +67,24 @@ public class FinalDialog extends JDialog {
 	  }
 
 	  public void setFinal(Final finalObj) {
-	    this.finalObj = finalObj;
+	   
 	    alumnos.setSelectedItem(finalObj.getAlumno());
 	    materias.setSelectedItem(finalObj.getMateria());
 	    fechaLabel.setText(finalObj.getFecha().toString());
 	    campoNota.setText(String.valueOf(finalObj.getNota()));
+	    id.setText(String.valueOf(finalObj.getId()));
 	  }
 
-	  public void editableFields(boolean b) {
+	 public void editableFields(boolean b) {
 	    alumnos.setEditable(b);
 	    materias.setEditable(b);
 	    campoNota.setEditable(b);
 	  }
 
 	  private JPanel createCenter0() {
-	    JPanel pane = new JPanel(new GridLayout(4, 1));
+	    JPanel pane = new JPanel(new GridLayout(5, 1));
+	    pane.add(new JLabel("Id Finales : "));
+	    pane.add(this.id = new JLabel());
 	    pane.add(new JLabel("Alumno : "));
 	    pane.add(this.alumnos = new JComboBox<>());
 	    pane.add(new JLabel("Materia : "));
@@ -115,9 +119,13 @@ public class FinalDialog extends JDialog {
 	      Materia materia = (Materia) materias.getSelectedItem();
 	      double nota = Double.parseDouble(campoNota.getText());
 	      Final finalObj2 = new Final();
+	      System.out.println(nota);
+	     
 	      Final finalObj = new Final(finalObj2.getId(), alumno, materia, LocalDate.now(), nota);
+	      System.out.println(finalObj2.getId());
 	      (new FinalDAO()).agregar(finalObj);
 	      dispose();
+	      limpiarcampos();
 	      tableModel.update(new FinalDAO().getFinales());
 	    }
 	    if (this.operacion == Operacion.ELIMINAR) {
@@ -126,11 +134,27 @@ public class FinalDialog extends JDialog {
 	      tableModel.update(new FinalDAO().getFinales());
 	    }
 	    if (this.operacion == Operacion.ACTUALIZAR) {
+	    	System.out.println("pase por aki");
+	    	 Alumno alumno = (Alumno) alumnos.getSelectedItem();
+		      Materia materia = (Materia) materias.getSelectedItem();
+		      double nota = Double.parseDouble(campoNota.getText());
+		      int id2 = Integer.parseInt(id.getText());
+		      
+		      System.out.println(nota);
+		      Final finalObj2 = new Final();
+		      Final finalObj = new Final(id2, alumno, materia, LocalDate.now(), nota);
+		      System.out.println(finalObj2.getId());
 	    	 
 	      (new FinalDAO()).actualizar(finalObj);
 	      dispose();
+	      limpiarcampos();
 	      tableModel.update(new FinalDAO().getFinales());
 	    }
 	  }
+	  public void limpiarcampos() {
+			campoNota.setText("");
+			id.setText("");
+			
+		}
 
 	}

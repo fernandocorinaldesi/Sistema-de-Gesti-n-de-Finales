@@ -2,11 +2,8 @@ package ar.com.unpaz.taller.vista;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.time.LocalDate;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -15,12 +12,7 @@ import javax.swing.JTextField;
 
 import ar.com.unpaz.modelo.Alumno;
 import ar.com.unpaz.modelo.AlumnoTabletModel;
-import ar.com.unpaz.modelo.Final;
-import ar.com.unpaz.modelo.FinalTableModel;
-import ar.com.unpaz.modelo.Materia;
 import ar.com.unpaz.taller.db.AlumnoDAO;
-import ar.com.unpaz.taller.db.FinalDAO;
-import ar.com.unpaz.taller.vista.FinalDialog.Operacion;
 
 public class AlumnoDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -67,9 +59,8 @@ public class AlumnoDialog extends JDialog {
 			String dni2 = dni.getText();
 			String nombre2 = nombre.getText();
 			String apellido2 = apellido.getText();
-			String email2 = email.getText();
-			if (dni2.isEmpty() || nombre2.isEmpty() || apellido2.isEmpty() || email2.isEmpty()) {
-				JOptionPane.showMessageDialog(this, "Debe completar los campos");
+			if (dni2.isEmpty() || nombre2.isEmpty() || apellido2.isEmpty()) {
+				JOptionPane.showMessageDialog(this, "Debe completar los campos obligatorios");
 			} else if (!esEntero(dni2)) {
 				JOptionPane.showMessageDialog(this, "Error en el DNI");
 			} else {

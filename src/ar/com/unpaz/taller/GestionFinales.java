@@ -2,7 +2,7 @@ package ar.com.unpaz.taller;
 
 import java.awt.EventQueue;
 
-import javax.swing.JDialog;
+
 import javax.swing.JFrame;
 
 import ar.com.unpaz.modelo.AlumnoTabletModel;
@@ -120,6 +120,7 @@ public class GestionFinales {
         menuBar.add(mnSistema);
         
         mntmAcercaDe = new JMenuItem("Acerca de");
+        
         mnSistema.add(mntmAcercaDe);
         
         mntmSalir = new JMenuItem("Salir de Sistema");

@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+
+
 public class AlumnoTabletModel extends AbstractTableModel{
 	private static final long serialVersionUID = 1L;
 	private List<Alumno> alumno;
-    private static  String[] COLUMNAS={"Dni", "Nombre", "Apellido","Email"};
+    private static  String[] COLUMNAS={"Dni", "Nombre", "Apellido","Email","Porcentaje"};
     
     
     public AlumnoTabletModel (List<Alumno> alumno){
@@ -32,12 +34,15 @@ public class AlumnoTabletModel extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Object retorno  = null;
+      
         Alumno a = this.alumno.get(rowIndex);
         switch (columnIndex){
             case 0: retorno = String.valueOf(a.getDni());break;
             case 1: retorno = a.getNombre(); break;
             case 2: retorno = a.getApellido(); break;
             case 3: retorno = a.getEmail(); break;
+            case 4: retorno = String.valueOf(a.getPorcentaje()); break;
+            
            
         }
         return retorno;

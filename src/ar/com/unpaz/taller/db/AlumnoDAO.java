@@ -11,7 +11,7 @@ import ar.com.unpaz.modelo.Alumno;
 
 public class AlumnoDAO {
 	  private static final String LISTAALUMNOS = 
-	            "SELECT A.DNI,A.NOMBRE,A.APELLIDO,A.EMAIL FROM ALUMNO A ";
+	            "SELECT A.DNI,A.NOMBRE,A.APELLIDO,A.EMAIL,dbo.porcentajeCarrera(DNI, 4) AS PorcentajeCarrera FROM ALUMNO A ";
 	  //  private static final String WHEREANIO = 
 	         //   "WHERE ANIO = ? ";
 	    
@@ -30,8 +30,12 @@ public class AlumnoDAO {
 	            "DELETE FROM ALUMNO WHERE DNI = ? ";
 	    
 	    private static final String MAXALUMNO = "SELECT ISNULL(MAX(DNI),0) + 1 AS MAXDNI FROM ALUMNO ";
+	   
 	    
 	    private static final String ACTUALIZARALUMNO = "UPDATE ALUMNO SET NOMBRE = ?, APELLIDO = ?, EMAIL = ? WHERE DNI = ? ";
+	    
+	    
+	 
 	    
 	  
 	    
@@ -45,13 +49,18 @@ public class AlumnoDAO {
 	            
 	            PreparedStatement ps = con.prepareStatement(LISTAALUMNOS);
 	            ResultSet rs = ps.executeQuery();
+	           // double por = this.getporcentaje(con);
 	            
 	            while(rs.next()){
+	            	
 	                Alumno a = new Alumno();
 	                a.setDni( rs.getInt("DNI") );
 	                a.setNombre(rs.getString("NOMBRE"));
 	                a.setApellido(rs.getString("APELLIDO"));
 	                a.setEmail(rs.getString("EMAIL"));
+	                //double por = this.getporcentaje(con);
+	                a.setPorcentaje(rs.getDouble("PorcentajeCarrera"));
+
 	                alumnos.add(a);
 	            }
 	            
@@ -99,7 +108,7 @@ public class AlumnoDAO {
 	   
 	    
 	    
-	    public ArrayList<Alumno> getAlumnoOrderByDNI(){
+	  public ArrayList<Alumno> getAlumnoOrderByDNI(){
 	        
 	        ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 	        try {
@@ -196,6 +205,7 @@ public class AlumnoDAO {
 
 	    private int getMaxDNIAlumno(Connection con) throws SQLException{
 	        int retorno = -1;
+	        
 	      
 	        PreparedStatement ps = con.prepareStatement(MAXALUMNO );
 	        ResultSet rs = ps.executeQuery();
@@ -206,7 +216,7 @@ public class AlumnoDAO {
 	        
 	        return retorno;
 	    }
-	    
+	  		    
 	    
 	    public int BorrarAlumno(Alumno a){
 	        int retorno = 0;

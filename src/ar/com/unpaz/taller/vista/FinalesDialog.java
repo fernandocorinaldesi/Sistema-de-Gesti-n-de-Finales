@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import ar.com.unpaz.modelo.FinalTableModel;
 import ar.com.unpaz.taller.db.FinalDAO;
@@ -24,9 +26,10 @@ public class FinalesDialog extends JDialog {
 	  private JButton actualizar;
 	  private FinalTableModel tableModel;
 	  private FinalDialog subDialog = new FinalDialog();
+	  
 
 	  public FinalesDialog(String titulo, FinalTableModel tableModel) {
-	    this.tableModel = tableModel;
+		 this.tableModel = tableModel;
 	    subDialog.setTableModel(tableModel);
 	    setSize(450, 256);
 	    setModal(true);
@@ -34,6 +37,9 @@ public class FinalesDialog extends JDialog {
 	    setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 	    getContentPane().add(createCenter(), BorderLayout.CENTER);
 	    getContentPane().add(createSouth(), BorderLayout.SOUTH);
+	    TableRowSorter<TableModel> elQueOrdena = new TableRowSorter<TableModel>(tableModel);
+		table.setRowSorter(elQueOrdena);
+	   
 	  }
 
 	  private JScrollPane createCenter() {

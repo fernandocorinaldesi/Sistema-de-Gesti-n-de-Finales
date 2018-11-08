@@ -7,10 +7,17 @@ public class Alumno {
 	  private String nombre;
 	  private String apellido;
 	  public String email;
+	  private double porcentaje;
 
 	  public int getDni() {
 	    return dni;
 	  }
+	  public double getPorcentaje() {
+		    return porcentaje;
+		  }
+	  public void setPorcentaje(double porcentaje) {
+		    this.porcentaje= porcentaje;
+		  }
 
 	  public void setDni(int dni) {
 	    this.dni = dni;
@@ -51,39 +58,11 @@ public class Alumno {
 	    return result;
 	  }
 
-	  @Override
-	  public boolean equals(Object obj) {
-	    if (this == obj)
-	      return true;
-	    if (obj == null)
-	      return false;
-	    if (getClass() != obj.getClass())
-	      return false;
-	    Alumno other = (Alumno) obj;
-	    if (apellido == null) {
-	      if (other.apellido != null)
-	        return false;
-	    } else if (!apellido.equals(other.apellido))
-	      return false;
-	    if (dni != other.dni)
-	      return false;
-	    if (email == null) {
-	      if (other.email != null)
-	        return false;
-	    } else if (!email.equals(other.email))
-	      return false;
-	    if (nombre == null) {
-	      if (other.nombre != null)
-	        return false;
-	    } else if (!nombre.equals(other.nombre))
-	      return false;
-	    return true;
-	  }
 
-	  @Override
 	  public String toString() {
-	    return "" + dni + " - " + nombre + " - " + apellido + " - " + email;
+	    return "" + dni + " - " + nombre + " - " + apellido + " - " + email+" - "+porcentaje;
 
 	  }
+}
 
-	}
+	

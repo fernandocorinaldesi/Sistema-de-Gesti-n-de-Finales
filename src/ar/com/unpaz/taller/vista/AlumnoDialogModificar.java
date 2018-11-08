@@ -24,7 +24,7 @@ public class AlumnoDialogModificar extends JDialog {
 	private JButton aceptar;
 	private JButton cancelar;
 	private AlumnoTabletModel tableModel;
-	private Alumno finalObj;
+	private Alumno alumnoObj;
 
 	public AlumnoDialogModificar() {
 		this.setModal(true);
@@ -38,13 +38,21 @@ public class AlumnoDialogModificar extends JDialog {
 		this.tableModel = tableModel;
 	}
 
-	public void setFinal(Alumno finalObj) {
-		this.finalObj = finalObj;
-
-		nombre.setText(finalObj.getNombre().toString());
-		apellido.setText(finalObj.getApellido().toString());
-		email.setText(finalObj.getEmail().toString());
-		dni.setText(String.valueOf(finalObj.getDni()));
+	public void setFinal(Alumno alumnoObj) {
+		this.alumnoObj = alumnoObj;
+		if (alumnoObj.getEmail()==null) {
+			nombre.setText(alumnoObj.getNombre().toString());
+			apellido.setText(alumnoObj.getApellido().toString());
+			String vacio="";
+			email.setText(vacio);
+			dni.setText(String.valueOf(alumnoObj.getDni()));
+		} 
+		else {
+			nombre.setText(alumnoObj.getNombre().toString());
+			apellido.setText(alumnoObj.getApellido().toString());
+			email.setText(alumnoObj.getEmail().toString());
+			dni.setText(String.valueOf(alumnoObj.getDni()));
+		}
 	}
 
 	private JPanel createCenter0() {
@@ -65,8 +73,9 @@ public class AlumnoDialogModificar extends JDialog {
 		this.aceptar = new JButton("Grabar");
 		aceptar.setIcon(new ImageIcon(MateriasDialog.class.getResource("./images/Guardar.png")));
 		this.aceptar.addActionListener((e) -> {
+			
 			Alumno b = new Alumno();
-			b.setDni(b.getDni());
+			b.setDni(alumnoObj.getDni());
 			b.setNombre(nombre.getText());
 			b.setApellido(apellido.getText());
 			b.setEmail(email.getText());
